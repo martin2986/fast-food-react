@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^10.16.5",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0"
@@ -25,6 +27,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "react-bootstrap": "^2.9.1",
+    "react-router-dom": "^6.19.0",
     "sass": "^1.69.5",
     "vite": "^5.0.0",
     "vite-plugin-eslint": "^1.8.1"
