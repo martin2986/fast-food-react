@@ -1,2 +1,13 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "./components/NavBar.scss";
+
+.side {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 40em) {
+  .side {
+    display: none;
+  }
+}
