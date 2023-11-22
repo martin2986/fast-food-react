@@ -1,0 +1,20 @@
+.cart {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  padding-top: 1rem;
+
+  h4 {
+    font-size: 18px;
+  }
+  .iconWrapper {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 1.2rem;
+    padding: 0.1rem 0.4rem;
+    .icon {
+      font-size: 16px;
+      color: #ff2522;
+    }
+  }
+}

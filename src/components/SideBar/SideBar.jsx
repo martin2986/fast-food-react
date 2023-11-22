@@ -8,14 +8,15 @@ import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import "./SideBar.scss";
 
-const SideBar = () => {
+const SideBar = ({ left }) => {
   return (
     <Sidebar
       style={{
-        minWidth: "200px ",
+        minWidth: { left },
         width: "150px",
         fontSize: "14px",
-        height: "100vh",
+        height: "100%",
+        border: "none",
       }}
       backgroundColor="#fff"
     >
