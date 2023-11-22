@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { CiSearch } from "react-icons/ci";
 import UserIcon from "./UserIcon";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import SideBar from "./SideBar/SideBar";
 
 import "./NavBar.scss";
 const NavBar = () => {
@@ -26,7 +27,7 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" className="w-100">
       <Container className=" d-flex flex-row  align-items-center justify-content-between">
-        <Navbar.Brand href="/" role="button" className="c">
+        <Navbar.Brand href="/" role="button">
           Bubble
         </Navbar.Brand>
         <form className="align-items-start">
@@ -37,15 +38,19 @@ const NavBar = () => {
           aria-controls="offcanvasNavbar-expand-sm"
           className="toggleBtn"
         />
-        <div className=" float-sm-end">
-          <Navbar.Offcanvas id="basic-navbar-nav" placement="end">
+        <div>
+          <Navbar.Offcanvas
+            id="basic-navbar-nav"
+            placement="end"
+            className=" w-50"
+          >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title>
                 <UserIcon userName="Username" id="userId" />
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="d-flex flex-row align-items-center  justify-content-center">
+              <Nav className=" ">
                 {showItems && (
                   <>
                     <div>
@@ -55,8 +60,14 @@ const NavBar = () => {
                         />
                       </div>
                     </div>
-                    <UserIcon userName="UserName" id="userId" />
+                    <UserIcon userName="Username" id="userId" />
                   </>
+                )}
+
+                {!showItems && (
+                  <div className="w-75">
+                    <SideBar left="100%" />
+                  </div>
                 )}
               </Nav>
             </Offcanvas.Body>

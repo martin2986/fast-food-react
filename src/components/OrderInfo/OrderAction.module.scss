@@ -1,0 +1,26 @@
+.orderAction {
+  font-size: 13px;
+  color: rgb(174, 173, 173);
+  cursor: pointer;
+
+  .icon {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+}
+
+.textArea {
+  margin-top: 1rem;
+  .textarea {
+    font-size: 16px;
+    border: none;
+    margin: 1rem 0;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    // padding-left: 0.5rem;
+  }
+}
