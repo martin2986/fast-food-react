@@ -5,7 +5,13 @@ const Button = ({ icon, title, handleClick, name }) => {
     <button
       type="button"
       onClick={handleClick}
-      className={`${name === "order" ? classes.order : classes.btn}`}
+      className={`${
+        name === "order"
+          ? classes.order
+          : name === "checkout"
+          ? classes.checkout
+          : classes.btn
+      }`}
     >
       <span className={`${classes.icon} text-nowrap`}>{icon}</span>
       {title}

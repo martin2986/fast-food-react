@@ -1,7 +1,6 @@
 import classes from "./SelectQuantity.module.scss";
 
 const SelectQuantity = ({ quantity, onDecrease, onIncrease }) => {
-  const showDelete = quantity === 1;
   return (
     <div className={classes.quantity}>
       <span onClick={onDecrease}>-</span>

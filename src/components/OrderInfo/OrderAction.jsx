@@ -6,13 +6,23 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 const OrderAction = ({ addnote, customize }) => {
-  const [addNote, setAddNote] = useState(false);
+  const [toggleNew, setToggleNew] = useState(false);
+  const [newNote, setNewNote] = useState("");
+  const [renderNewNote, setRenderNewNote] = useState([]);
+
+  const addNewNoteHandler = () => {
+    console.log(newNote);
+    setRenderNewNote([...renderNewNote, newNote]);
+    setNewNote("");
+    setToggleNew(!toggleNew);
+  };
+
   return (
     <div>
       <div
         className={`d-flex flex-row justify-content-between align-items-center ${classes.orderAction}`}
       >
-        <div onClick={() => setAddNote(!addNote)}>
+        <div onClick={() => setToggleNew(!toggleNew)}>
           <HiOutlineDocumentAdd className={classes.icon} />
 
           {addnote}
@@ -23,17 +33,24 @@ const OrderAction = ({ addnote, customize }) => {
           {customize}
         </div>
       </div>
-      {addNote && (
+      {toggleNew && (
         <div className={classes.textArea}>
           <Form.Control
             className={classes.textarea}
             as="textarea"
             aria-label="With textarea"
+            value={newNote}
+            onChange={(e) => setNewNote(e.target.value)}
           />
 
-          <Button title="Add" name="order" />
+          <Button title="Add" name="order" handleClick={addNewNoteHandler} />
         </div>
       )}
+      {renderNewNote.map((list, id) => (
+        <p className="mt-3" key={id}>
+          {list}
+        </p>
+      ))}
     </div>
   );
 };

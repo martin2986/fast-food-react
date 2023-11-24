@@ -44,3 +44,24 @@
     color: #f7f7f8;
   }
 }
+
+.checkout {
+  background-color: #f86e0a;
+  border: none;
+  max-width: 120px;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  color: #fff;
+  text-wrap: nowrap;
+  margin: 1rem 0.5rem;
+
+  &:hover {
+    background-color: #fff;
+    transition: 0.3ms ease-in;
+    color: #f86e0a;
+    border: 1px solid #f86e0a;
+  }
+}

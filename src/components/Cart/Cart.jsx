@@ -1,23 +1,25 @@
-import classes from "./Cart.module.scss";
-import OrderInfo from "../OrderInfo/OrderInfo";
-import OrderAction from "../OrderInfo/OrderAction";
-import SelectQuantity from "../OrderInfo/SelectQuantity";
-import { MdDeleteOutline } from "react-icons/md";
-const Cart = ({ id }) => {
+import { useSelector } from "react-redux";
+import CartIem from "./CartIem";
+import Button from "../Button/Button";
+const Cart = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
-    <div className={classes.cart}>
-      <h4>Order #00054</h4>
-      <div>
-        <OrderInfo title="Cheese Burger" price="15" />
-        <OrderAction addnote="Add Note" customize="Customize" />
-        <div className="d-flex flex-row justify-content-between align-items-center">
-          <SelectQuantity quantity={1} />
-          <div className={classes.iconWrapper}>
-            <MdDeleteOutline className={classes.icon} />
-          </div>
+    cartItems.length > 0 && (
+      <div className="d-flex flex-column h-75 justify-content-between">
+        <div>
+          {cartItems.map((item) => (
+            <div>
+              <CartIem key={item.id} {...item} />
+            </div>
+          ))}
+        </div>
+
+        <div className="align-self-center">
+          <Button name="checkout" title={`Charge $${totalAmount}`} />
         </div>
       </div>
-    </div>
+    )
   );
 };
 
