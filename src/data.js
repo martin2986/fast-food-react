@@ -11,7 +11,7 @@ export const data = [
     title: "Pizza",
     price: 33,
     image:
-      "https://api.pizzahut.io/v1/content/images/pizza/hawaiian.fc03446222211e25b145a5109fb3f555.1.jpg",
+      "https://realfood.tesco.com/media/images/1400x919-MargaritaPizza-555a4065-2573-4b41-bcf3-7193cd095d8f-0-1400x919.jpg",
   },
   {
     id: "p3",
