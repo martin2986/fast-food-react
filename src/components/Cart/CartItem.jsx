@@ -7,16 +7,24 @@ import { MdDeleteOutline } from "react-icons/md";
 import { cartAction } from "../../store/cart";
 import { useDispatch } from "react-redux";
 
-const CartIem = ({ id, image, price, quantity, title }) => {
-  const defaultQuantity = 1;
+const CartIem = ({
+  id,
+  image,
+  price,
+  title,
+  quantity,
+  totalPrice,
+  onGetdescription,
+}) => {
   const dispatch = useDispatch();
   const addItemHandler = () => {
     dispatch(
       cartAction.addItem({
         id,
-        title,
+        image,
         price,
-        quantity: defaultQuantity,
+        quantity,
+        totalPrice,
       })
     );
   };
@@ -26,19 +34,22 @@ const CartIem = ({ id, image, price, quantity, title }) => {
   const deleteItem = () => {
     dispatch(cartAction.deleteItem(id));
   };
+
   return (
     <motion.div
-      key="list"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-      transition={{ duration: 0.2 }}
+      key={id}
+      layout
+      exit={{ y: -30, opacity: 0 }}
       className={classes.cart}
     >
       <h4>Order {id}</h4>
       <div>
         <OrderInfo img={image} title={title} price={price} />
-        <OrderAction addnote="Add Note" customize="Customize" />
+        <OrderAction
+          addnote="Add Note"
+          customize="Customize"
+          onGetdescription={onGetdescription}
+        />
         <div className="d-flex flex-row justify-content-between align-items-center">
           <SelectQuantity
             quantity={quantity}

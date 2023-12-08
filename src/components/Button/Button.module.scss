@@ -2,14 +2,14 @@
   background-color: #fff;
   border: none;
   max-width: 120px;
-  width: 120px;
+  width: 100px;
   font-size: 14px;
   font-weight: 300;
-  padding: 0.4rem;
+  padding: 0.5rem;
   border-radius: 0.3rem;
   color: rgb(39, 38, 38);
   text-wrap: nowrap;
-  margin: 1rem 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
 
   &:hover {
     background-color: #f86e0a;
@@ -63,5 +63,33 @@
     transition: 0.3ms ease-in;
     color: #f86e0a;
     border: 1px solid #f86e0a;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .btn {
+    max-width: 100px;
+    width: 80px;
+    padding: 0.5rem;
+    font-size: 12px;
+    .icon {
+      font-size: 12px;
+    }
+  }
+
+  .order {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 28em) {
+  .btn {
+    max-width: 100px;
+    width: 75px;
+    padding: 0.3rem;
+    font-size: 12px;
+    .icon {
+      font-size: 12px;
+    }
   }
 }
