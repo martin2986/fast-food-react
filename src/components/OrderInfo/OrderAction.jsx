@@ -1,37 +1,42 @@
 import classes from "./OrderAction.module.scss";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
-import { CiEdit } from "react-icons/ci";
 import Button from "../Button/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
 
-const OrderAction = ({ addnote, customize }) => {
+const OrderAction = ({ addnote, customize, onGetdescription }) => {
   const [toggleNew, setToggleNew] = useState(false);
   const [newNote, setNewNote] = useState("");
   const [renderNewNote, setRenderNewNote] = useState([]);
+  const textRef = useRef(null);
 
   const addNewNoteHandler = () => {
-    console.log(newNote);
-    setRenderNewNote([...renderNewNote, newNote]);
+    onGetdescription(newNote);
+    setRenderNewNote((prev) => [...prev, newNote]);
+
     setNewNote("");
-    setToggleNew(!toggleNew);
+    setToggleNew((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (toggleNew && textRef.current) {
+      textRef.current.focus();
+    }
+  }, [toggleNew]);
 
   return (
     <div>
       <div
         className={`d-flex flex-row justify-content-between align-items-center ${classes.orderAction}`}
       >
-        <div onClick={() => setToggleNew(!toggleNew)}>
+        <div onClick={() => setToggleNew((prev) => !prev)}>
           <HiOutlineDocumentAdd className={classes.icon} />
 
           {addnote}
         </div>
         <span></span>
-        <div>
-          <CiEdit className={classes.icon} />
-          {customize}
-        </div>
       </div>
       {toggleNew && (
         <div className={classes.textArea}>
@@ -41,6 +46,7 @@ const OrderAction = ({ addnote, customize }) => {
             aria-label="With textarea"
             value={newNote}
             onChange={(e) => setNewNote(e.target.value)}
+            ref={textRef}
           />
 
           <Button title="Add" name="order" handleClick={addNewNoteHandler} />

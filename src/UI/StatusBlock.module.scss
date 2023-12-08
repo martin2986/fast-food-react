@@ -1,0 +1,48 @@
+.error,
+.success {
+  width: 100%;
+  background-color: #f0d9e5;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: #a72c10;
+  //   color: #890b35;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  text-align: left;
+
+  h2 {
+    color: inherit;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .errorIcon {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+    background-color: #890b35;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.success {
+  background-color: #d9f0e2;
+  color: green;
+  .errorIcon {
+    background-color: green;
+  }
+}
+
+// @media screen and (max-width: 48em) {
+//   .error,.success {
+
+//   }
+// }

@@ -1,0 +1,63 @@
+.card {
+  width: 250px;
+  height: 300px;
+  margin-bottom: 5rem;
+  margin-right: 0.2rem;
+
+  .skeleton {
+    width: 280px;
+    height: 300px;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .skeleton {
+      width: 80px;
+      height: 20px;
+      margin-right: 1rem;
+    }
+    .skeletonBtn {
+      width: 70px;
+      height: 30px;
+      border-radius: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 62em) {
+  .card {
+    width: 200px;
+    height: 200px;
+    .skeleton {
+      width: 100%;
+      height: 200px;
+    }
+    .description {
+      .skeleton {
+        width: 80px;
+        height: 20px;
+        margin-right: 0.2rem;
+      }
+      .skeletonBtn {
+        width: 60px;
+        height: 30px;
+        border-radius: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 28em) {
+  .card {
+    width: 350px;
+    height: 400px;
+    margin-bottom: 3rem;
+    .skeleton {
+      width: 93 + 1vw;
+      height: 350px;
+    }
+  }
+}
