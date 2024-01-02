@@ -3,12 +3,12 @@ import { QueryClient } from "@tanstack/react-query";
 export const queryClient = new QueryClient();
 
 export const fetchFood = async () => {
-  let { data: foodData, error } = await supabase.from("foods").select("*");
+  let { data, error } = await supabase.from("foods").select("*");
 
   if (error) {
     error.message = "Failed to fetch food Items";
   }
-  return { foodData, error };
+  return { data, error };
 };
 
 export const fetchOrderItems = async () => {
@@ -22,7 +22,8 @@ export const fetchOrderItems = async () => {
     error.info = await response.json();
     throw error;
   }
-  return response.json();
+  const data = await response.json();
+  return data;
 };
 
 export const sendOrderData = async (items) => {

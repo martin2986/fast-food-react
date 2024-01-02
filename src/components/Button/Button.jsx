@@ -1,6 +1,15 @@
 import classes from "./Button.module.scss";
 
-const Button = ({ icon, title, handleClick, name, value }) => {
+const Button = ({
+  icon,
+  title,
+  handleClick,
+  name,
+  outline,
+  value,
+  orderOutline,
+  ...props
+}) => {
   return (
     <button
       type="button"
@@ -11,8 +20,13 @@ const Button = ({ icon, title, handleClick, name, value }) => {
           ? classes.order
           : name === "checkout"
           ? classes.checkout
+          : outline
+          ? classes.checkoutOutline
+          : orderOutline
+          ? classes.orderOutline
           : classes.btn
       }`}
+      {...props}
     >
       <span className={`${classes.icon} text-nowrap`}>{icon}</span>
       {title}

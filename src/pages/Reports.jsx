@@ -5,13 +5,15 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchOrderItems } from "../util/http";
 import { transFormData } from "../util/helperFn";
-import ErrorPage from "../components/Error/ErrorPage";
+
+import ErrorMessage from "../components/Error/ErrorMessage";
 import ReportSkeleton from "../components/Skeleton/ReportSkeleton/ReportSkeleton";
 const Reports = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["orders"],
     queryFn: fetchOrderItems,
   });
+
   useEffect(() => {
     document.title = "Reports";
     return () => {
@@ -27,7 +29,7 @@ const Reports = () => {
 
   if (isError) {
     content = (
-      <ErrorPage
+      <ErrorMessage
         message={
           error?.info.message ||
           "An Error Occured can't load reports. Please Try again"

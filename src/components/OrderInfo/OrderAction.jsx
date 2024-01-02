@@ -47,6 +47,7 @@ const OrderAction = ({ addnote, customize, onGetdescription }) => {
             value={newNote}
             onChange={(e) => setNewNote(e.target.value)}
             ref={textRef}
+            onResize={false}
           />
 
           <Button title="Add" name="order" handleClick={addNewNoteHandler} />
