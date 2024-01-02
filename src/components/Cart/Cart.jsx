@@ -10,6 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 import StatusBlock from "../../UI/StatusBlock";
 import { useState } from "react";
 import CartList from "./CartList";
+import { ClipLoader } from "react-spinners";
 const id = uuidv4();
 const Cart = () => {
   const [renderComponent, setRenderComponent] = useState(false);
@@ -22,7 +23,6 @@ const Cart = () => {
 
   const description = (notes) => {
     setNote((notes) => ` ${notes}`);
-    console.log(notes);
   };
 
   const items = {
@@ -44,19 +44,31 @@ const Cart = () => {
       dispatch(cartAction.emptyCart());
     },
   });
-
-  let content;
-
-  if (isPending) {
-    content = "Loading...";
-  }
-  if (!isPending) {
-    content = `Charge $${totalAmount}`;
-  }
-
   const chargeHandler = () => {
     mutate({ items: items });
   };
+
+  let content;
+
+  if (!isPending) {
+    content = (
+      <Button
+        name="checkout"
+        title={`Charge $${totalAmount}`}
+        handleClick={chargeHandler}
+      />
+    );
+  }
+
+  if (isPending) {
+    content = (
+      <Button
+        title={<ClipLoader color="#f86e0a" size={20} />}
+        handleClick={chargeHandler}
+        outline
+      />
+    );
+  }
 
   return (
     <div>
@@ -83,14 +95,7 @@ const Cart = () => {
             <div>
               <CartList cartItems={cartItems} onGetdescription={description} />
             </div>
-
-            <div className="align-self-center">
-              <Button
-                name="checkout"
-                title={content}
-                handleClick={chargeHandler}
-              />
-            </div>
+            <div className="align-self-center">{content}</div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -30,7 +30,8 @@
   }
 }
 
-.order {
+.order,
+.orderOutline {
   max-width: 100px;
   width: 70px;
   font-size: 13px;
@@ -43,9 +44,14 @@
     background-color: #f86e0a;
     color: #f7f7f8;
   }
+  &.orderOutline {
+    background-color: #f86e0a;
+    color: #f7f7f8;
+  }
 }
 
-.checkout {
+.checkout,
+.checkoutOutline {
   background-color: #f86e0a;
   border: none;
   max-width: 120px;
@@ -59,6 +65,12 @@
   margin: 1rem 0.5rem;
 
   &:hover {
+    background-color: #fff;
+    transition: 0.3ms ease-in;
+    color: #f86e0a;
+    border: 1px solid #f86e0a;
+  }
+  &.checkoutOutline {
     background-color: #fff;
     transition: 0.3ms ease-in;
     color: #f86e0a;

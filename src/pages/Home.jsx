@@ -15,11 +15,11 @@ const Home = () => {
   const cart = useSelector((state) => state.cart.items);
   const [selected, setSelected] = useState(null);
 
-  const { data: food, isPending } = useQuery({
+  const { data: foodItems, isPending } = useQuery({
     queryKey: ["food"],
     queryFn: fetchFood,
   });
-  const result = filteredData(food?.foodData, selected, query);
+  const result = filteredData(foodItems?.data, selected, query);
 
   const handleClick = (e) => {
     setSelected(e.target.value);
@@ -27,8 +27,8 @@ const Home = () => {
 
   let content;
 
-  if (food?.error) {
-    content = <Error message={food?.error.message} />;
+  if (foodItems?.error) {
+    content = <Error message={foodItems?.error.message} />;
   }
 
   if (result?.length === 0) {
@@ -52,6 +52,7 @@ const Home = () => {
                 <CartIcon />
               </div>
             )}
+
             <Row>{content}</Row>
           </Col>
           <Col

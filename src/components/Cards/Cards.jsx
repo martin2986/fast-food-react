@@ -2,8 +2,9 @@ import classes from "./Cards.module.scss";
 import Card from "react-bootstrap/Card";
 import Button from "../Button/Button";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartAction } from "../../store/cart";
+import { useState } from "react";
 
 const variants = {
   y: 0,
@@ -14,8 +15,14 @@ const variants = {
 };
 const Cards = ({ item }) => {
   const { image, title, price, id, quantity } = item;
+  const [ordered, setOrdered] = useState(false);
 
   const dispatch = useDispatch();
+
+  const deleteItem = () => {
+    setOrdered((prev) => !prev);
+    dispatch(cartAction.deleteItem(id));
+  };
 
   const addItemHandler = () => {
     dispatch(
@@ -28,6 +35,8 @@ const Cards = ({ item }) => {
         totalPrice: price,
       })
     );
+    setOrdered((prev) => !prev);
+    //true = false == delete
   };
   return (
     <motion.div
@@ -49,7 +58,16 @@ const Cards = ({ item }) => {
               </Card.Text>
             </div>
             <div>
-              <Button title="Order" name="order" handleClick={addItemHandler} />
+              {ordered && (
+                <Button title="Order" orderOutline handleClick={deleteItem} />
+              )}
+              {!ordered && (
+                <Button
+                  title="Order"
+                  name="order"
+                  handleClick={addItemHandler}
+                />
+              )}
             </div>
           </div>
         </Card.Body>
