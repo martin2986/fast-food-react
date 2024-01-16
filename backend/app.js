@@ -1,11 +1,16 @@
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
-
 const app = express();
 
-const port = process.env.PORT || 3000;
+const mealRouter = require('./routes/mealRoutes');
 
-app.listen(port, () => {
-  console.log(`App running on ${port}`);
-});
+app.use(express.json());
+
+app.use(cors());
+
+app.use('/api/meals', mealRouter);
+
+module.exports = app;
