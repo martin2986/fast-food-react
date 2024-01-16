@@ -2,7 +2,7 @@ import classes from "./Cards.module.scss";
 import Card from "react-bootstrap/Card";
 import Button from "../Button/Button";
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { cartAction } from "../../store/cart";
 import { useState } from "react";
 
@@ -36,7 +36,6 @@ const Cards = ({ item }) => {
       })
     );
     setOrdered((prev) => !prev);
-    //true = false == delete
   };
   return (
     <motion.div

@@ -11,6 +11,19 @@ export const fetchFood = async () => {
   return { data, error };
 };
 
+export const fetchMeals = async () => {
+  const response = await fetch("http://127.0.0.1:3000/api/meals");
+
+  if (!response.ok) {
+    const error = new Error("Can't fetch meals! please try again");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+  const data = await response.json();
+  return data;
+};
+
 export const fetchOrderItems = async () => {
   const response = await fetch(
     "https://fast-food-44b06-default-rtdb.europe-west1.firebasedatabase.app/orders.json"

@@ -11,10 +11,8 @@ const OrderList = () => {
   });
 
   const orderData = transFormData(data);
-  let orderContent;
-
-  if (isError) {
-    orderContent = (
+  if (isError)
+    return (
       <ErrorMessage
         message={
           error?.info.message ||
@@ -22,19 +20,18 @@ const OrderList = () => {
         }
       />
     );
-  }
 
-  if (isPending) {
-    orderContent = <ListSkeleton list={15} />;
-  }
+  if (isPending) return <ListSkeleton list={15} />;
 
-  if (data) {
-    console.log(data);
-    orderContent = <OrderItems orderItems={orderData} />;
-  }
+  // if (data) {
+  //   console.log(data);
+  //   orderContent = <OrderItems orderItems={orderData} />;
+  // }
 
   return (
-    <div className="d-none d-md-block mx-auto w-100 h-100">{orderContent}</div>
+    <div className="d-none d-md-block mx-auto w-100 h-100">
+      <OrderItems orderItems={orderData} />
+    </div>
   );
 };
 
