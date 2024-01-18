@@ -25,7 +25,6 @@ const Home = () => {
                 <CartIcon />
               </div>
             )}
-
             <Row>
               <Meals selected={selected} query={query} />
             </Row>

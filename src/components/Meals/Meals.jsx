@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMeals } from "../../util/http";
 import { filteredData } from "../../util/helperFn";
+import { fetchMeals } from "../../util/http";
 import Error from "../Error/ErrorMessage";
 import CardSkeleton from "../Skeleton/CardSkeleton/CardSkeleton";
-import CardItem from "../Cards/CardItem";
+import MealList from "./MealList";
 const Meals = ({ selected, query }) => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["meals"],
@@ -19,7 +19,7 @@ const Meals = ({ selected, query }) => {
   if (result?.length === 0)
     return <h4 className="fs-5 text-center mt-5">Item not available</h4>;
 
-  return <CardItem result={result} />;
+  return <MealList result={result} />;
 };
 
 export default Meals;

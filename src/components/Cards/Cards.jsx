@@ -1,10 +1,10 @@
-import classes from "./Cards.module.scss";
-import Card from "react-bootstrap/Card";
-import Button from "../Button/Button";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import Card from "react-bootstrap/Card";
 import { useDispatch } from "react-redux";
 import { cartAction } from "../../store/cart";
-import { useState } from "react";
+import Button from "../Button/Button";
+import classes from "./Cards.module.scss";
 
 const variants = {
   y: 0,
@@ -13,8 +13,7 @@ const variants = {
     y: { stiffness: 1000, velocity: -100 },
   },
 };
-const Cards = ({ item }) => {
-  const { image, title, price, id, quantity } = item;
+const Cards = ({ image, title, price, id, quantity }) => {
   const [ordered, setOrdered] = useState(false);
 
   const dispatch = useDispatch();
