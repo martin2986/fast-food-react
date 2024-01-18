@@ -60,9 +60,9 @@ const App = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-'  useEffect(() => {
+  useEffect(() => {
     dispatch(fetchCartData());
-  }, [dispatch]);'
+  }, [dispatch]);
 
   useEffect(() => {
     if (initials) {
