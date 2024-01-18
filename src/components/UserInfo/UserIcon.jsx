@@ -1,5 +1,4 @@
-import "./UserIcon.scss";
-const UserIcon = ({ userName, id }) => {
+const UserIcon = ({ userName = "smith", id }) => {
   return (
     <div className="d-flex flex-row align-items-center justify-content-center">
       <div>

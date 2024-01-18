@@ -4,11 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.scss";
 import Error from "./components/Error/ErrorPage";
 import RootLayout from "./components/RootLayout";
-import { sendCartData, fetchCartData } from "./store/cart-Actions";
 import ListSkeleton from "./components/Skeleton/OrderListSkeleton/ListSkeleton";
 import ReportSkeleton from "./components/Skeleton/ReportSkeleton/ReportSkeleton";
-import Home from "./pages/Home";
 import CartInfo from "./pages/CartInfo";
+import Home from "./pages/Home";
+import { fetchCartData, sendCartData } from "./store/cart-Actions";
 
 const OrderList = lazy(() => import("./pages/OrderList"));
 const Reports = lazy(() => import("./pages/Reports"));

@@ -1,31 +1,18 @@
 const Meal = require('../models/mealsModels');
+const catchAsync = require('../utils/catchAsync');
 
-exports.getAllMeals = async (req, res) => {
+exports.getAllMeals = catchAsync(async (req, res) => {
   const meals = await Meal.find();
-  try {
-    res.status(200).json({
-      status: 'success',
-      data: meals,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'error',
-      message: error,
-    });
-  }
-};
+  res.status(200).json({
+    status: 'success',
+    data: meals,
+  });
+});
 
-exports.createMeals = async (req, res) => {
-  try {
-    const newMeal = await Meal.create(req.body);
-    res.status(201).json({
-      status: 'success',
-      data: newMeal,
-    });
-  } catch (error) {
-    res.status(400).json({
-      status: 'error',
-      message: error,
-    });
-  }
-};
+exports.createMeals = catchAsync(async (req, res) => {
+  const newMeal = await Meal.create(req.body);
+  res.status(201).json({
+    status: 'success',
+    data: newMeal,
+  });
+});

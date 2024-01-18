@@ -4,8 +4,8 @@ const mealSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, 'title required'],
-    minlength: [10, 'title length should be at least 10'],
-    unique: true,
+    // minlength: [10, 'title length should be at least 10'],
+    // unique: true,
   },
   price: {
     type: Number,
@@ -21,10 +21,16 @@ const mealSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    required: [true, 'types of meal is required'],
+    // required: [true, 'types of meal is required'],
   },
 });
 
-const Meal = mongoose.model('Meal', mealSchema);
+const orderSchema = new mongoose.Schema({
+  items: [mealSchema],
+  totalAmount: Number,
+  totalQuantity: Number,
+});
 
-module.exports = Meal;
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
